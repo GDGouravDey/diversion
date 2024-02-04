@@ -289,3 +289,8 @@ header .right_side nav .search input {
         height: 100%;
     }
 }
+
+#link a {
+    color: #fff;
+    text-decoration: none;
+}
