@@ -89,7 +89,7 @@ app.post('/login',   async( req,res , next) =>{
       console.log("logged in ")//res.render("index.html");
       console.log(user.username)
       console.log(res.redirect)
-      return res.status(200).json({ message: 'Login successful', redirect: '/todolog.html?username=' + user.username });
+      return res.status(200).json({ message: 'Login successful', redirect: '/home.html?username=' + user.username });
     } else {
       res.status(400).json({ error: "password doesn't match" });
     }

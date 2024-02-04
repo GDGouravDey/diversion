@@ -45,6 +45,10 @@ router.get('/projects', async (req, res) => {
       'Weather API',
       'Notification API',
       'Geolocation API',
+      'Jenkins',
+      'Docker',
+      'Kubernetes',
+      'Rust'
     ];
 
     // Convert 'None' to an array with an empty string

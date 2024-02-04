@@ -116,22 +116,30 @@ router.post("/updateTodoState", async (req, res) => {
         userId,
         projectName,
       });
+      const isProjectAlreadyAdded = user.todoProjects.some(
+        (todoProject) => todoProject.projectName === projectName
+      );
 
-      user.todoProjects.push({ project: project._id, projectName });
-      await user.save();
-      await newTodo.save();
-      console.log(projectName)
-      res.status(200).json({ error: false, message: "Project added to todo list successfully" });
+      if (!isProjectAlreadyAdded) {
+        // Only push the project if it's not already present
+        user.todoProjects.push({ project: project._id, projectName });
+        await user.save();
+        await newTodo.save();
+        console.log(projectName);
+        res.status(200).json({ error: false, message: "Project added to todo list successfully" });
+      } else {
+        // Project is already in the todo list, display a duplicate error message
+        res.status(400).json({ error: true, message: "Project already in todo list", duplicateProject: projectName });
+      }
     } else {
-      // Project is already in the todo list, handle accordingly
-      res.status(400).json({ error: true, message: "Project already in todo list" });
+      // Project is already in the todo list, display a duplicate error message
+      res.status(400).json({ error: true, message: "Project already in todo list", duplicateProject: projectName });
     }
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: true, message: "Internal Server Error" });
   }
 });
-
 // Add this route in your backend
 router.get("/getTodoList", async (req, res) => {
   try {
@@ -149,10 +157,10 @@ router.get("/getTodoList", async (req, res) => {
     }
     const userId = user._id;
     const todoList = await Todo.find({ userId })
-    
+
     const formattedTodoList = todoList.map(todo => ({
-      name: todo.userId ,
-      projectName : todo.projectName , 
+      name: todo.userId,
+      projectName: todo.projectName,
       completed: true, // Use true for completed projects
     }));
     console.log("the todo list is -----")

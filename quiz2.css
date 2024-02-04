@@ -16,6 +16,10 @@ body {
     /* display: grid;
     place-items: center; */
     color: #fff;
+    margin: 0;
+    padding: 0;
+    /* Add the following lines to hide the scrollbar */
+    overflow: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -32,6 +36,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
+   
 }
 
 header .right_side,
@@ -90,7 +95,7 @@ header .right_side nav ul li a:hover {
 
 /* The two functions below this comment are Very Important. */
 
-header .right_side nav ul li:nth-child(4) {
+header .right_side nav ul li:nth-child(2) {
     color: #fff;
 }
 
@@ -169,11 +174,83 @@ header .right_side nav .search input {
 }
 
 @media (min-width: 768px) {
-
     /* Change this for Customization */
     .button-63 {
         font-size: 16px;
         min-width: 10%;
         max-height: 30px;
     }
+}
+
+
+/*Cards of frontend,backend and devops*/
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    background-color: #001e4d;
+    color: #fff;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.search input {
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.card-section {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2rem;
+}
+
+.card {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+    border-radius: 10px; 
+    border: solid ;
+}
+.card p {
+    margin-bottom: 30px; 
+}
+
+.card:hover {
+    transform: scale(1.1);
+}  
+
+h3{
+    font-size: 40px;
+}
+p{
+    font-size: 25px;
 }

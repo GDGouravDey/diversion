@@ -186,7 +186,7 @@
     {
       "projectName": "Cloud Native Voting Application",
       "description": "Deploy an Application from scratch on Kuberenetes starting from EKS cluster setup to testing the application.",
-      "requirements": ["Kubernets"],
+      "requirements": ["Kubernetes"],
       "difficulty": "Easy",
       "difficultyRating": 1,
       "projectLink": "https://github.com/N4si/K8s-voting-app"

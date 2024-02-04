@@ -73,20 +73,6 @@
                     <input type="checkbox" class="requirementCheckbox" id="Jenkins" value="Jenkins">
                 </li>
                 <li class="stackItem">
-                    <label for="Docker">
-                        <img src="./tech_logos/docker.svg" alt="Docker Logo">
-                        <h3>Docker</h3>
-                    </label>
-                    <input type="checkbox" class="requirementCheckbox" id="Docker" value="Docker">
-                </li>
-                <li class="stackItem">
-                    <label for="Kubernetes">
-                        <img src="./tech_logos/kubernetes.svg" alt="Kubernetes Logo">
-                        <h3>Kubernetes</h3>
-                    </label>
-                    <input type="checkbox" class="requirementCheckbox" id="Kubernetes" value="Kubernetes">
-                </li>
-                <li class="stackItem">
                     <label for="MachineLearning">
                         <img src="./tech_logos/ml.svg" alt="MachineLearning Logo">
                         <h3>Machine Learning</h3>
@@ -117,7 +103,32 @@
                     <i class="bi bi-search"></i>
                     <input type="text" placeholder="Search Projects">
                 </div> -->
-                <a class="button-63" href="./login.html" role="button">Log In</a>
+                <a class="button-63" id="loginButton" href="./login.html" role="button">Log In</a>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Get the username from the URL
+                        const queryString = window.location.search;
+                        const urlParams = new URLSearchParams(queryString);
+                        const username = urlParams.get('username');
+
+                        // Get the login button element by its id
+                        const loginButton = document.getElementById('loginButton');
+
+                        // Check if the username is present in the URL
+                        if (username) {
+                            // Change the button text to "Log Out"
+                            loginButton.textContent = 'Log Out';
+
+                            // Add an event listener for log-out functionality
+                            loginButton.addEventListener('click', function () {
+                                // Perform log-out actions (e.g., clear session, redirect, etc.)
+                                // For demonstration purposes, we'll display an alert
+                                alert('User logged out');
+                            });
+                        }
+                    });
+                </script>
 
             </nav>
             <!-- Body will start from here -->
@@ -152,15 +163,23 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         // Get the button element by its id
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const username = urlParams.get('username');
         var todoButton = document.getElementById('todoButton');
-      
+
         // Add an event listener to the button
-        todoButton.addEventListener('click', function() {
-          // Redirect to abc.com
-          window.location.href = 'https://abc.com';
-        });
-      </script>
-      
+        todoButton.addEventListener('click', function () {
+
+            if (username) {
+                window.location.href = `./todolog.html?username=${username}`;
+            } else {
+                // Handle the case where the username is not provided in the URL
+                window.location.href = './login.html'; // Or set it to a default value
+            }
+        })
+    </script>
+
     <script src="app.mjs"></script>
 </body>
 
